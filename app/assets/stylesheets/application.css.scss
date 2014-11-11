@@ -1,0 +1,14 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "sticky-footer-navbar";
+@import "docs.min";
+
+.bs-callout-success {
+  border-left-color: #5cb85c;
+
+  h4 {
+    color: #5cb85c;
+  }
+
+}

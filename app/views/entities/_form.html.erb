@@ -1,0 +1,40 @@
+<%= form_for(@entity, :html => {:class => 'form-horizontal'}) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <%= f.label :employee, :class => 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :employee, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :handle, :class => 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :handle, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :status, :class => 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :status, :class => 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit 'submit', :class => 'btn btn-success' %>
+      </div>
+    </div>
+<% end %>
