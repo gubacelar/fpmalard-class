@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
       if @contact.save
         ContactMailer.student_contact(@contact).deliver
         flash[:success] = 'Message was successfully sent. Thank you for the feedback.'
-        format.html { redirect_to :controller => :contacts, :action => :new}
+        format.html { redirect_to contact_path}
         format.json { render action: 'show', status: :created, location: @contact }
       else
         format.html { render action: 'new' }

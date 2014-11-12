@@ -26,4 +26,9 @@ FpmalardClass::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+    "<div class=\"has-error control-group error\">#{html_tag}</div>".html_safe
+  }
+
 end

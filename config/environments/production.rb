@@ -77,4 +77,9 @@ FpmalardClass::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+    "<div class=\"has-error control-group error\">#{html_tag}</div>".html_safe
+  }
+
 end

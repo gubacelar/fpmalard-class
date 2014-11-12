@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111024707) do
+ActiveRecord::Schema.define(version: 20141112010024) do
 
   create_table "contacts", force: true do |t|
     t.string   "email"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141111024707) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "check"
   end
 
 end

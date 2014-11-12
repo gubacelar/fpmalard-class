@@ -1,15 +1,4 @@
 <%= form_for(@entity, :html => {:class => 'form-horizontal'}) do |f| %>
-  <% if @entity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
-
-      <ul>
-      <% @entity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
     <div class="form-group">
       <%= f.label :employee, :class => 'col-sm-2 control-label' %>
@@ -26,11 +15,25 @@
     </div>
 
     <div class="form-group">
+
       <%= f.label :status, :class => 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= f.text_field :status, :class => 'form-control' %>
+
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-danger active">
+            <%= f.radio_button :status, '0' %> Not ready
+          </label>
+          <label class="btn btn-warning">
+            <%= f.radio_button :status, '1' %> In Progress
+          </label>
+          <label class="btn btn-primary">
+            <%= f.radio_button :status, '2' %> Ready
+          </label>
+        </div>
       </div>
     </div>
+
+
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">

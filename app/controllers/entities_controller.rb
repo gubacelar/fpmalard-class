@@ -1,5 +1,6 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:check]
 
   # GET /entities
   # GET /entities.json
@@ -25,10 +26,12 @@ class EntitiesController < ApplicationController
   # POST /entities.json
   def create
     @entity = Entity.new(entity_params)
+    @entity.check = false
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
+        flash[:success] = 'Entity was successfully created.'
+        format.html { redirect_to :controller => :entities, :action => :new }
         format.json { render action: 'show', status: :created, location: @entity }
       else
         format.html { render action: 'new' }
@@ -49,6 +52,21 @@ class EntitiesController < ApplicationController
         format.json { render json: @entity.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /entities/1.json
+  def check
+    @entity = Entity.find(params[:entity_id])
+    @entity.check = true
+
+    respond_to do |format|
+      if @entity.save
+        format.json { render json: {status: :ok} }
+      else
+        format.json { render json: @entity.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # DELETE /entities/1

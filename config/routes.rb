@@ -1,7 +1,12 @@
 FpmalardClass::Application.routes.draw do
+
+  get 'contact' => "contacts#new"
   resources :contacts
 
-  resources :entities
+
+  resources :entities do
+    post :check
+  end
 
   root "entities#new"
 
