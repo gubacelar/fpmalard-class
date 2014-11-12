@@ -46,3 +46,4 @@ bower.json
 *.ipr
 *.iws
 *.iml
+deploy.rb
