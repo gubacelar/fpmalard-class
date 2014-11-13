@@ -6,6 +6,8 @@ class EntitiesController < ApplicationController
   # GET /entities.json
   def index
     @entities = Entity.where(:check => false)
+
+      render :json => @entities, :callback => params[:callback]
   end
 
   # GET /entities/1
@@ -59,12 +61,10 @@ class EntitiesController < ApplicationController
     @entity = Entity.find(params[:entity_id])
     @entity.check = true
 
-    respond_to do |format|
-      if @entity.save
-        format.json { render json: {status: :ok} }
-      else
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
-      end
+    if @entity.save
+       render json: {status: :ok}, :callback => params[:callback]
+    else
+      render json: @entity.errors, status: :unprocessable_entity, :callback => params[:callback]
     end
 
   end
