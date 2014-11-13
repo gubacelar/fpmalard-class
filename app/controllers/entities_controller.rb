@@ -1,11 +1,11 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, only: [:check]
+  skip_before_filter :verify_authenticity_token, only: [:check, :index]
 
   # GET /entities
   # GET /entities.json
   def index
-    @entities = Entity.all
+    @entities = Entity.where(:check => false)
   end
 
   # GET /entities/1
