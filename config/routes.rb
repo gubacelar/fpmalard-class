@@ -1,6 +1,6 @@
 FpmalardClass::Application.routes.draw do
 
-  get 'contact' => "contacts#new"
+  get 'feedback' => "contacts#new", :as => 'feedback'
   resources :contacts
 
 
