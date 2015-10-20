@@ -6,6 +6,7 @@ FpmalardClass::Application.routes.draw do
 
   resources :entities do
     get :check
+    get :list
   end
 
   root "entities#new"

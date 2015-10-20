@@ -10,6 +10,10 @@ class EntitiesController < ApplicationController
       render :json => @entities, :callback => params[:callback]
   end
 
+  def list
+    @entities = Entity.all
+  end
+
   # GET /entities/1
   # GET /entities/1.json
   def show
