@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use mysql as the database for Active Record
-# gem 'mysql2'
-gem 'pg'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
 
 # Twitter Bootstrap
 gem 'bootstrap-sass', '~> 3.3.0'
